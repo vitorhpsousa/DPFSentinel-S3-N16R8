@@ -54,7 +54,7 @@
 // blank unix_time and a TIME marker in the raw log lets tools/date_session.py back-fill them.
 // A DS3231 on I2C (addr 0x68) is used automatically if present (see docs/wiring.md).
 #define NTP_ENABLED 1
-#define RTC_DS3231_ENABLED 1
+#define RTC_DS3231_ENABLED 0   // set to 1 and set the two pins below once a DS3231 is wired (docs/wiring.md)
 #define RTC_SDA_PIN -1          // set to your SDA pin, e.g. 47
 #define RTC_SCL_PIN -1
 // POSIX time-zone rule for local time (UK default; DST automatic). Stored log times are always UTC.
