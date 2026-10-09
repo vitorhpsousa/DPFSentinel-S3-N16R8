@@ -35,10 +35,14 @@ switched USB socket.
 
 ## Where is the time from?
 
-No RTC is required. The clock is set from a DS3231 if fitted, else NTP when your WiFi is in range, else from
-your phone: join the `DPF-Sentinel` hotspot, open `http://192.168.4.1` and it sets the time. Rows logged
-before the clock is known have an empty `unix_time`; `tools/date_session.py` back-fills them from the
-`TIME` marker in the raw log. See [docs/log-format.md](docs/log-format.md).
+No RTC is required. The clock is set from a DS3231 if fitted, else from the internet as soon as the board joins your
+WiFi or your phone's hotspot. Rows logged before the clock is known have an empty `unix_time`;
+`tools/date_session.py` back-fills them from the `TIME` marker in the raw log. See [docs/log-format.md](docs/log-format.md).
+
+## Reaching the web page
+The board has no screen. When it joins a network, open `http://obd-logger.local` (or the address in the Telegram "Wi-Fi
+joined" message) from a phone or computer on the same network. There you see live values and can download the log files.
+The SD card also works on its own: take it out and read the `obd` folder.
 
 ## Layout
 

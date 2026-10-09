@@ -51,7 +51,7 @@ Note: opening the serial port resets the board and starts a new session file.
 
 ## 7. Next steps
 - Plug the adapter into the car with the ignition on, power the board, and watch the monitor for `ELM327 adapter ready`.
-- Set the clock: join the `DPF-Sentinel` WiFi on your phone, open http://192.168.4.1.
+- Clock and web page: put your WiFi (home, and your phone hotspot as the second network) in `secrets.h`. Once the board joins, it sets its clock from the internet; open `http://obd-logger.local` from the same network.
 - Read the card on the PC: files are in the `obd` folder.
 - Developers: `pio test -e native` needs a compiler on PATH (MinGW-w64/MSYS2); skip it if you only flash.
 
