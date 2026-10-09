@@ -26,9 +26,10 @@ Optional: put your WiFi name and password in `secrets.h` (2.4 GHz only). Leave e
 works without WiFi, and the `DPF-Sentinel` hotspot is always available.
 
 ## 3. Connect the board and find its port
-The board has two USB-C sockets: one marked **COM/UART** and one marked **USB**. Use the **USB** (native) socket: the
-firmware prints there. Then `pio device list` should show a `COMx` entry (Device Manager > Ports shows the same). If
-nothing appears, try the other socket, another data-capable cable, or install the CH340/CP210x driver.
+The board has two USB-C sockets. Use the one marked **COM** (or UART) for everything: flashing and reading messages.
+Then `pio device list` should show a `COMx` entry (Device Manager > Ports shows the same). If nothing appears, try
+another data-capable cable, or install the CH340/CP210x driver for the chip next to that socket. The other socket
+(marked USB) can power the board but prints nothing.
 
 ## 5. Build and flash
 Insert a FAT32 microSD card first if you want to see logging work immediately.

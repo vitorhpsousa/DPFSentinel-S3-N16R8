@@ -67,9 +67,10 @@
 #define WIFI_DISABLED 0         // diagnostic: 1 = never start WiFi
 
 // --- Telegram (OFF by default) ---
-// Set ENABLE_TELEGRAM to 1 only after TG_BOT_TOKEN and TG_CHAT_ID are filled in include/secrets.h
-// (how to get them: comments in include/secrets.example.h). The build stops if the token is malformed.
-#define ENABLE_TELEGRAM 0
+// Telegram sends regeneration start/finish alerts and a daily summary. It stays quiet until a token and chat id
+// are filled in include/secrets.h (no token = Telegram off at run time, nothing breaks).
+// (how to get them: docs/telegram-setup.md). A token without a colon, or a token without a chat id, stops the build.
+#define ENABLE_TELEGRAM 1   // ON: this board has no screen, so Telegram is how you hear about a regen
 #define TG_ALERT_WIFI 1
 #define TG_ALERT_REGEN 1        // regen start/finish alerts (also drives the on-device regen beeps)
 #define TG_SEND_HOUR 17
@@ -106,7 +107,7 @@
 // Written as a recursive constexpr function because the ESP32 toolchain compiles as C++11.
 #if ENABLE_TELEGRAM
 static constexpr bool hasColon(const char *t) { return *t == 0 ? false : (*t == ':' ? true : hasColon(t + 1)); }
-static_assert(hasColon(TG_BOT_TOKEN),
+static_assert(sizeof(TG_BOT_TOKEN) <= 1 || hasColon(TG_BOT_TOKEN),
               "TG_BOT_TOKEN must look like 12345678:AAbbCCdd... (bot id, colon, secret). See include/secrets.example.h");
-static_assert(sizeof(TG_CHAT_ID) > 1, "TG_CHAT_ID is empty. See include/secrets.example.h");
+static_assert(sizeof(TG_BOT_TOKEN) <= 1 || sizeof(TG_CHAT_ID) > 1, "TG_CHAT_ID is empty (token is set). See include/secrets.example.h");
 #endif
