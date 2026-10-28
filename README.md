@@ -1,5 +1,10 @@
 # DPF Sentinel — ESP32-S3 N16R8 (no screen)
 
+> **This repository has moved.** DPF Sentinel now lives in one codebase for both ESP32-S3 boards:
+> **https://github.com/vitorhpsousa/DPFSentinel-ESP32-S3**. It has the portrait 3.5" screen, the next-regen
+> estimate, the dash-mileage offset, safer SD logging and up-to-date setup guides. This repo is archived and no
+> longer updated; please open issues and pull requests there.
+
 A small, **read-only** OBD-II logger for the diesel particulate filter (DPF) of a 2014 Hyundai ix35 1.7 CRDi.
 It reads soot level, differential pressure, exhaust temperature and regeneration state about once a second
 over a BLE ELM327 adapter and **saves everything to a microSD card**. [Telegram alerts](docs/telegram-setup.md) tell you when a regeneration starts and finishes (on by default; quiet until you add a bot token).
